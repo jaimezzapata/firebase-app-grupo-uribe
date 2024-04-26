@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import { initDatabase } from "../../config/firebaseConfig";
 import { collection, getDocs, deleteDoc } from "firebase/firestore";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [users, setUsers] = useState([]);
+  let redireccion = useNavigate()
 
   async function consultarUsuarios() {
     let colectionUsuarios = collection(initDatabase, "usuarios");
@@ -30,6 +32,7 @@ const Login = () => {
         text: "Será redireccionado al Home!",
         icon: "success"
       });
+      redireccion('/home')
     } else {
       Swal.fire({
         title: "Error",
