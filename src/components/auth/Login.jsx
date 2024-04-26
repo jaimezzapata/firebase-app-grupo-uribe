@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { initDatabase } from "../../config/firebaseConfig";
 import { collection, getDocs, deleteDoc } from "firebase/firestore";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -20,11 +21,22 @@ const Login = () => {
   }, [])
   function buscarUsuario() {
     let userExist = users.some((item) => item.user === user)
-    console.log(userExist)
+    return userExist
   }
   function iniciarSesion() {
-    console.log(email, password);
-    buscarUsuario()
+    if (buscarUsuario()) {
+      Swal.fire({
+        title: "Bievenido!",
+        text: "Será redireccionado al Home!",
+        icon: "success"
+      });
+    } else {
+      Swal.fire({
+        title: "Error",
+        text: "Usuario y/o contraseña incorrecto o no existe",
+        icon: "error"
+      });
+    }
   }
   return (
     <form>
