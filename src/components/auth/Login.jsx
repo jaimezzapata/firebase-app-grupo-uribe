@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { initDatabase } from "../../config/firebaseConfig";
 import { collection, getDocs, deleteDoc } from "firebase/firestore";
 
@@ -12,15 +12,19 @@ const Login = () => {
     let colectionUsuarios = collection(initDatabase, "usuarios");
     let resultado = await getDocs(colectionUsuarios);
     let infoUsuarios = resultado.docs
-    console.log(colectionUsuarios);
-    console.log(infoUsuarios);
-    console.log(infoUsuarios.map((doc)=> ({...doc.data()})));
+    setUsers(infoUsuarios.map((doc) => ({ ...doc.data(), id: doc.id })));
+    console.log(infoUsuarios.map((doc) => ({ ...doc.data() })));
   }
-  consultarUsuarios();
-
-  function buscarUsuario() {}
+  useEffect(() => {
+    consultarUsuarios()
+  }, [])
+  function buscarUsuario() {
+    let userExist = users.some((item) => item.user === user)
+    console.log(userExist)
+  }
   function iniciarSesion() {
     console.log(email, password);
+    buscarUsuario()
   }
   return (
     <form>
