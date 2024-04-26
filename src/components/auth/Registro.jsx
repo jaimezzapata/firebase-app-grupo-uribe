@@ -72,6 +72,7 @@ const Registro = () => {
                 name=""
                 id=""
             />
+            <input onChange={(e) => { console.log(e.target.files[0]) }} type="file" />
             <input
                 onClick={registrarUsuario}
                 type="button"

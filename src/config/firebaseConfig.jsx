@@ -15,3 +15,4 @@ const app = initializeApp(firebaseConfig);
 export const initDatabase = getFirestore(app);
 export const initStorage = getStorage(app);
 export const initAuth = getAuth(app);
+
