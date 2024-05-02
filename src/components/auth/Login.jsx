@@ -26,7 +26,8 @@ const Login = () => {
     let userExist = users.some((item) => item.user === user)
     return userExist
   }
-  function iniciarSesion() {
+  function iniciarSesion(e) {
+    e.preventDefault()
     if (buscarUsuario()) {
       Swal.fire({
         title: "Bievenido!",
@@ -44,29 +45,29 @@ const Login = () => {
   }
   return (
     <div className="login-container">
-    <h2>Login</h2>
-    <form>
-      <input
-        type="text"
-        placeholder="Username"
-        onChange={(e) => setUser(e.target.value)}
-        required
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-        required
-      />
-      <input
-        type="email"
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
-      <input type="submit" value="Login" />
-    </form>
-  </div>
+      <h2>Login</h2>
+      <form>
+        <input
+          type="text"
+          placeholder="Username"
+          onChange={(e) => setUser(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input onClick={iniciarSesion} type="submit" value="Login" />
+      </form>
+    </div>
   );
 };
 

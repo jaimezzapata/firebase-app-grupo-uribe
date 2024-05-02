@@ -14,7 +14,7 @@ let router = createBrowserRouter([
   {
     path: '/registro',
     element: <Registro />
-  }
+  },
 ])
 function App() {
   return (

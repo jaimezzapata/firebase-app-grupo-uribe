@@ -73,7 +73,7 @@ const Registro = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     required
                 />
-                <input onClick={registrarUsuario} type="submit" value="Login" />
+                <input onClick={registrarUsuario} type="submit" value="Registro" />
             </form>
         </div>
     );
