@@ -3,6 +3,7 @@ import { initDatabase } from "../../config/firebaseConfig";
 import { collection, getDocs, deleteDoc } from "firebase/firestore";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import './Login.css'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -42,36 +43,30 @@ const Login = () => {
     }
   }
   return (
+    <div className="login-container">
+    <h2>Login</h2>
     <form>
       <input
+        type="text"
+        placeholder="Username"
         onChange={(e) => setUser(e.target.value)}
-        placeholder="Usuario"
-        type="text"
-        name=""
-        id=""
+        required
       />
       <input
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Correo"
-        type="text"
-        name=""
-        id=""
-      />
-      <input
+        type="password"
+        placeholder="Password"
         onChange={(e) => setPassword(e.target.value)}
-        placeholder="Contraseña"
-        type="text"
-        name=""
-        id=""
+        required
       />
       <input
-        onClick={iniciarSesion}
-        type="button"
-        value="Iniciar Sesión"
-        name=""
-        id=""
+        type="email"
+        placeholder="Email"
+        onChange={(e) => setEmail(e.target.value)}
+        required
       />
+      <input type="submit" value="Login" />
     </form>
+  </div>
   );
 };
 
