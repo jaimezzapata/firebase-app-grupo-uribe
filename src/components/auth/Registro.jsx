@@ -3,6 +3,7 @@ import { initDatabase } from "../../config/firebaseConfig";
 import { collection, getDocs, deleteDoc, addDoc } from "firebase/firestore";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import './Login.css'
 
 const Registro = () => {
     const [email, setEmail] = useState("");
@@ -32,7 +33,8 @@ const Registro = () => {
         }
         await addDoc(nuevoUsuario, usuario)
     }
-    function registrarUsuario() {
+    function registrarUsuario(e) {
+        e.preventDefault()
         if (buscarUsuario()) {
             Swal.fire({
                 title: "Error!",
@@ -50,37 +52,30 @@ const Registro = () => {
         }
     }
     return (
-        <form>
-            <input
-                onChange={(e) => setUser(e.target.value)}
-                placeholder="Usuario"
-                type="text"
-                name=""
-                id=""
-            />
-            <input
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Correo"
-                type="text"
-                name=""
-                id=""
-            />
-            <input
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Contraseña"
-                type="text"
-                name=""
-                id=""
-            />
-            <input onChange={(e) => { console.log(e.target.files[0]) }} type="file" />
-            <input
-                onClick={registrarUsuario}
-                type="button"
-                value="Registrar Usuario"
-                name=""
-                id=""
-            />
-        </form>
+        <div className="login-container">
+            <h2>Registro</h2>
+            <form>
+                <input
+                    type="text"
+                    placeholder="Username"
+                    onChange={(e) => setUser(e.target.value)}
+                    required
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+                <input
+                    type="email"
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
+                <input onClick={registrarUsuario} type="submit" value="Login" />
+            </form>
+        </div>
     );
 };
 
