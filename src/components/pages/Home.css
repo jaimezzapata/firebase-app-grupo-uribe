@@ -28,3 +28,23 @@
     right: 0;
     background-color: white;
 }
+
+.tarjeta {
+    width: 300px;
+    background-color: rgb(45, 45, 148);
+    color: white;
+    border-radius: 10px;
+    overflow: hidden; /* Para que la imagen no sobresalga */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .encabezado {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .contenido {
+    padding: 20px;
+  }
+  

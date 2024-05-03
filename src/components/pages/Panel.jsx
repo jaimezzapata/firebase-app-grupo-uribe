@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import { initDatabase } from '../../config/firebaseConfig';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Panel = ({ title }) => {
@@ -53,7 +54,7 @@ const Panel = ({ title }) => {
             <h3>Password: {user.password} </h3>
             <h3>Email: {user.email} </h3>
             <div>
-              <button>Editar</button>
+              <button type='button'><Link to={'/editar/'+user.id}>Editar</Link></button>
               <button type='button' onClick={() => confirmarAccion(user.id)}>Eliminar</button>
             </div>
           </section>
